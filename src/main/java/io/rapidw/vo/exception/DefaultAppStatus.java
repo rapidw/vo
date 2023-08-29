@@ -1,6 +1,6 @@
-package exception;
+package io.rapidw.vo.exception;
 
-public enum AppStatus {
+public enum DefaultAppStatus implements AppStatus {
     SUCCESS(0, "SUCCESS"),
     INVALID_REQUEST(20002, "INVALID_REQUEST"),
     NO_PERMISSION(20001, "NO_PERMISSION"),
@@ -9,7 +9,7 @@ public enum AppStatus {
 
     private final String message;
 
-    AppStatus(int code, String message) {
+    DefaultAppStatus(int code, String message) {
         this.code = code;
         this.message = message;
     }

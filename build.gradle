@@ -1,6 +1,15 @@
 plugins {
     id 'java-library'
     id "io.freefair.lombok" version "8.1.0"
+    id 'maven-publish'
+    id 'signing'
+}
+
+group = "io.rapidw.utils"
+
+ext {
+    projectUrl = "https://github.com/rapidw/vo"
+    vcsUrl = "${projectUrl}.git"
 }
 
 repositories {
@@ -10,4 +19,66 @@ repositories {
 dependencies {
     implementation 'com.baomidou:mybatis-plus-extension:3.5.3.1'
     implementation 'io.swagger:swagger-annotations:1.6.11'
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+}
+
+
+tasks.withType(Javadoc).configureEach {
+    options {
+        encoding = "UTF-8"
+        locale("en_US")
+        jFlags("-Duser.language=en_US")
+    }
+
+    if (JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption("html5", true)
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            pom {
+                name = project.name
+                description = "rapidw mqtt vo"
+                url = projectUrl
+
+                licenses {
+                    license {
+                        name = "The Apache License, Version 2.0"
+                        url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+
+                developers {
+                    developer {
+                        name = 'pvtyuan'
+                        email = 'yyz139@gmail.com'
+                    }
+                }
+
+                scm {
+                    connection = "scm:git:${vcsUrl}"
+                    developerConnection = "scm:git:${vcsUrl}"
+                    url = projectUrl
+                }
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
 }

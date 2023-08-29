@@ -1,6 +1,6 @@
-package response;
+package io.rapidw.vo.response;
 
-import exception.AppStatus;
+import io.rapidw.vo.exception.DefaultAppStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -10,7 +10,7 @@ public class DataResponse<T> extends BaseResponse {
     private final T data;
 
     protected DataResponse(T data) {
-        super(AppStatus.SUCCESS);
+        super(DefaultAppStatus.SUCCESS);
         this.data = data;
     }
 

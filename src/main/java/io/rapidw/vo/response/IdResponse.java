@@ -1,4 +1,4 @@
-package response;
+package io.rapidw.vo.response;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

@@ -1,9 +1,8 @@
-package request;
+package io.rapidw.vo.request;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 
 /**
  * @param <T> 对MPJ：返回值的类型，对MP：entity的类型
