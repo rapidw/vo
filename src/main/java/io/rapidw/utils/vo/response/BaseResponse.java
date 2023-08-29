@@ -1,7 +1,7 @@
-package io.rapidw.vo.response;
+package io.rapidw.utils.vo.response;
 
-import io.rapidw.vo.exception.AppException;
-import io.rapidw.vo.exception.DefaultAppStatus;
+import io.rapidw.utils.vo.exception.DefaultAppStatus;
+import io.rapidw.utils.vo.exception.AppException;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 

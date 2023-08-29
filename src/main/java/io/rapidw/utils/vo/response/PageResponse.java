@@ -1,4 +1,4 @@
-package io.rapidw.vo.response;
+package io.rapidw.utils.vo.response;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.annotations.ApiModel;

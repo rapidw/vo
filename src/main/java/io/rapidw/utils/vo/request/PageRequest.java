@@ -1,4 +1,4 @@
-package io.rapidw.vo.request;
+package io.rapidw.utils.vo.request;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.ApiModel;
