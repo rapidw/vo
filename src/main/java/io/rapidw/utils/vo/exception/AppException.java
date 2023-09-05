@@ -39,5 +39,4 @@ public class AppException extends RuntimeException {
         }
         return object;
     }
-
 }
