@@ -18,14 +18,10 @@ package io.rapidw.utils.vo.response;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-public class IdResponse<T> extends DataResponse<IdResponse.Id<T>>{
+public class IdResponse<T> extends DataResponse<IdResponse.Id<T>> {
 
-    protected IdResponse(T id) {
+    public IdResponse(T id) {
         super(new Id<T>().setId(id));
-    }
-
-    public static <T> DataResponse<T> of(T id) {
-        return new DataResponse<>(id);
     }
 
     @Data
