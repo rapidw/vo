@@ -18,6 +18,8 @@ package io.rapidw.utils.vo.exception;
 
 import lombok.Getter;
 
+import java.util.function.Supplier;
+
 @Getter
 public class AppException extends RuntimeException {
 
@@ -38,5 +40,9 @@ public class AppException extends RuntimeException {
             throw new AppException(DefaultAppStatus.INVALID_REQUEST, fieldName + "不能为空");
         }
         return object;
+    }
+
+    public static Supplier<AppException> of(AppStatus status, String extraMessage) {
+        return () -> new AppException(status, extraMessage);
     }
 }
