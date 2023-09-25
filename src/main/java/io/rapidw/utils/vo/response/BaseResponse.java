@@ -36,23 +36,11 @@ public class BaseResponse {
 
 
     public BaseResponse(AppException e) {
-        this(e.getStatus(), e.getExtraMessage());
+        this.code = e.getStatus().getCode();
+        this.message = e.getMessage();
     }
 
     protected BaseResponse(AppStatus status) {
-        this(status, null);
+        this.code = status.getCode();
     }
-
-    public BaseResponse(AppStatus status, String extraMessage) {
-        code = status.getCode();
-        if (extraMessage != null) {
-            message = status.getMessage() + ": " + extraMessage;
-        } else {
-            message = status.getMessage();
-        }
-    }
-
-    public BaseResponse() {
-    }
-
 }

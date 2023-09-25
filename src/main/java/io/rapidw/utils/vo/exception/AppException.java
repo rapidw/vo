@@ -15,10 +15,13 @@
  */
 package io.rapidw.utils.vo.exception;
 
+import lombok.Getter;
+
 import java.util.function.Supplier;
 
 public class AppException extends RuntimeException {
 
+    @Getter
     private final AppStatus status;
     private String extraMessage;
 
