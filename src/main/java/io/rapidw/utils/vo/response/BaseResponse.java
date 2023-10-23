@@ -42,5 +42,6 @@ public class BaseResponse {
 
     protected BaseResponse(AppStatus status) {
         this.code = status.getCode();
+        this.message = status.getMessage();
     }
 }
