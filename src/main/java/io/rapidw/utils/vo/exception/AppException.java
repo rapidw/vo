@@ -24,6 +24,18 @@ public class AppException extends RuntimeException {
     @Getter
     private final AppStatus status;
     private String extraMessage;
+    private Exception cause;
+
+    public AppException(Exception e, AppStatus status) {
+        super(e);
+        this.status = status;
+    }
+
+    public AppException(Exception e, AppStatus status, String extraMessage) {
+        super(e);
+        this.status = status;
+        this.extraMessage = extraMessage;
+    }
 
     public AppException(AppStatus status) {
         this.status = status;
