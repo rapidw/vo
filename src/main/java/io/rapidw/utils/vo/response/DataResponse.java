@@ -19,12 +19,18 @@ import io.rapidw.utils.vo.exception.DefaultAppStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 @ApiModel
 public class DataResponse<T> extends BaseResponse {
     @ApiModelProperty("数据")
-    private final T data;
+    private T data;
+
+    public DataResponse() {
+        super(DefaultAppStatus.SUCCESS);
+    }
 
     public DataResponse(T data) {
         super(DefaultAppStatus.SUCCESS);

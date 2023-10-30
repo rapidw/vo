@@ -20,6 +20,10 @@ import lombok.experimental.Accessors;
 
 public class IdResponse<T> extends DataResponse<IdResponse.Id<T>> {
 
+    public IdResponse() {
+        super(new Id<>());
+    }
+
     public IdResponse(T id) {
         super(new Id<T>().setId(id));
     }
@@ -28,5 +32,9 @@ public class IdResponse<T> extends DataResponse<IdResponse.Id<T>> {
     @Accessors(chain = true)
     public static class Id<T> {
         private T id;
+    }
+
+    public void setId(T id) {
+        this.getData().setId(id);
     }
 }
