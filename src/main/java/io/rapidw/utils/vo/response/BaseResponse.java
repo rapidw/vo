@@ -40,8 +40,13 @@ public class BaseResponse {
         this.message = e.getMessage();
     }
 
-    protected BaseResponse(AppStatus status) {
+    public BaseResponse(AppStatus status) {
         this.code = status.getCode();
         this.message = status.getMessage();
+    }
+
+    public BaseResponse(AppStatus status, String extraMessage) {
+        this.code = status.getCode();
+        this.message = status.getMessage() + ": " + extraMessage;
     }
 }
