@@ -16,7 +16,7 @@
 package io.rapidw.utils.vo.response;
 
 import io.rapidw.utils.vo.exception.AppStatus;
-import io.rapidw.utils.vo.exception.DefaultAppStatus;
+import io.rapidw.utils.vo.exception.CommonAppStatus;
 import io.rapidw.utils.vo.exception.AppException;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -26,10 +26,10 @@ import lombok.Getter;
 @ApiModel
 public class BaseResponse {
 
-    public static final BaseResponse SUCCESS = new BaseResponse(DefaultAppStatus.SUCCESS);
-    public static final BaseResponse AUTHENTICATION_REQUIRED = new BaseResponse(DefaultAppStatus.AUTHENTICATION_REQUIRED);
-    public static final BaseResponse ACCESS_DENIED = new BaseResponse(DefaultAppStatus.ACCESS_DENIED);
-    public static final BaseResponse INTERNAL_SERVER_ERROR = new BaseResponse(DefaultAppStatus.INTERNAL_ERROR);
+    public static final BaseResponse SUCCESS = new BaseResponse(CommonAppStatus.SUCCESS);
+    public static final BaseResponse AUTHENTICATION_REQUIRED = new BaseResponse(CommonAppStatus.AUTHENTICATION_REQUIRED);
+    public static final BaseResponse ACCESS_DENIED = new BaseResponse(CommonAppStatus.ACCESS_DENIED);
+    public static final BaseResponse INTERNAL_SERVER_ERROR = new BaseResponse(CommonAppStatus.INTERNAL_ERROR);
 
     @ApiModelProperty("状态码")
     private Integer code;

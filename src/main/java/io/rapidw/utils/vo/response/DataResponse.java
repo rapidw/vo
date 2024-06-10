@@ -15,7 +15,7 @@
  */
 package io.rapidw.utils.vo.response;
 
-import io.rapidw.utils.vo.exception.DefaultAppStatus;
+import io.rapidw.utils.vo.exception.CommonAppStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -29,11 +29,11 @@ public class DataResponse<T> extends BaseResponse {
     private T data;
 
     public DataResponse() {
-        super(DefaultAppStatus.SUCCESS);
+        super(CommonAppStatus.SUCCESS);
     }
 
     public DataResponse(T data) {
-        super(DefaultAppStatus.SUCCESS);
+        super(CommonAppStatus.SUCCESS);
         this.data = data;
     }
 }

@@ -18,7 +18,7 @@ package io.rapidw.utils.vo.exception;
 import lombok.Getter;
 
 @Getter
-public enum DefaultAppStatus implements AppStatus {
+public enum CommonAppStatus implements AppStatus {
     SUCCESS(0, "SUCCESS"),
     INVALID_REQUEST(400, "INVALID_REQUEST"),
     AUTHENTICATION_REQUIRED(401, "AUTHENTICATION_REQUIRED"),
@@ -28,7 +28,7 @@ public enum DefaultAppStatus implements AppStatus {
 
     private final String message;
 
-    DefaultAppStatus(int code, String message) {
+    CommonAppStatus(int code, String message) {
         this.code = code;
         this.message = message;
     }

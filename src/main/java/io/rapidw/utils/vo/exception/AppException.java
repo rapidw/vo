@@ -48,7 +48,7 @@ public class AppException extends RuntimeException {
 
     public static <T> T notNull(T object, String fieldName) {
         if (object == null) {
-            throw new AppException(DefaultAppStatus.INVALID_REQUEST, fieldName + "不能为空");
+            throw new AppException(CommonAppStatus.INVALID_REQUEST, fieldName + "不能为空");
         }
         return object;
     }
