@@ -20,9 +20,10 @@ import lombok.Getter;
 @Getter
 public enum DefaultAppStatus implements AppStatus {
     SUCCESS(0, "SUCCESS"),
-    INVALID_REQUEST(20002, "INVALID_REQUEST"),
-    NO_PERMISSION(20001, "NO_PERMISSION"),
-    INTERNAL_ERROR(20003, "INTERNAL_ERROR");
+    INVALID_REQUEST(400, "INVALID_REQUEST"),
+    AUTHENTICATION_REQUIRED(401, "AUTHENTICATION_REQUIRED"),
+    ACCESS_DENIED(403, "ACCESS_DENIED"),
+    INTERNAL_ERROR(500, "INTERNAL_ERROR");
     private final int code;
 
     private final String message;

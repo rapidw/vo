@@ -19,8 +19,11 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
+import lombok.val;
 
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Getter
 @ApiModel
@@ -46,6 +49,11 @@ public class PageResponse<T> extends DataResponse<List<T>> {
     }
     public static <T> PageResponse<T> of(List<T> data, long pageNum, long pageSize, long total) {
         return new PageResponse<>(data, pageNum, pageSize, total);
+    }
+
+    public static <T, R> PageResponse<R> of(IPage<T> page, Function<T, R> converter) {
+        val data = page.getRecords().stream().map(converter).collect(Collectors.toList());
+        return new PageResponse<>(data, page.getCurrent(), page.getSize(), page.getTotal());
     }
 
     private PageResponse(List<T> data, long pageNum, long pageSize, long total) {

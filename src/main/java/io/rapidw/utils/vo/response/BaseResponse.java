@@ -27,6 +27,8 @@ import lombok.Getter;
 public class BaseResponse {
 
     public static final BaseResponse SUCCESS = new BaseResponse(DefaultAppStatus.SUCCESS);
+    public static final BaseResponse AUTHENTICATION_REQUIRED = new BaseResponse(DefaultAppStatus.AUTHENTICATION_REQUIRED);
+    public static final BaseResponse ACCESS_DENIED = new BaseResponse(DefaultAppStatus.ACCESS_DENIED);
     public static final BaseResponse INTERNAL_SERVER_ERROR = new BaseResponse(DefaultAppStatus.INTERNAL_ERROR);
 
     @ApiModelProperty("状态码")
