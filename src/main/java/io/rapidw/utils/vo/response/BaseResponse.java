@@ -15,15 +15,14 @@
  */
 package io.rapidw.utils.vo.response;
 
+import io.rapidw.utils.vo.exception.AppException;
 import io.rapidw.utils.vo.exception.AppStatus;
 import io.rapidw.utils.vo.exception.CommonAppStatus;
-import io.rapidw.utils.vo.exception.AppException;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 
 @Getter
-@ApiModel
+@Schema
 public class BaseResponse {
 
     public static final BaseResponse SUCCESS = new BaseResponse(CommonAppStatus.SUCCESS);
@@ -31,9 +30,9 @@ public class BaseResponse {
     public static final BaseResponse ACCESS_DENIED = new BaseResponse(CommonAppStatus.ACCESS_DENIED);
     public static final BaseResponse INTERNAL_SERVER_ERROR = new BaseResponse(CommonAppStatus.INTERNAL_ERROR);
 
-    @ApiModelProperty("状态码")
+    @Schema(description = "状态码")
     private Integer code;
-    @ApiModelProperty("消息")
+    @Schema(description = "消息")
     private String message;
 
 

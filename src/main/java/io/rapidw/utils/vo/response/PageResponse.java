@@ -16,24 +16,21 @@
 package io.rapidw.utils.vo.response;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
-import lombok.val;
 
 import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 @Getter
-@ApiModel
+@Schema
 public class PageResponse<T> extends DataResponse<List<T>> {
 
-    @ApiModelProperty("当前页码")
+    @Schema(description = "当前页码")
     private final long pageNum;
-    @ApiModelProperty("每页大小")
+    @Schema(description = "每页大小")
     private final long pageSize;
-    @ApiModelProperty("总数")
+    @Schema(description = "总数")
     private final long total;
 
     protected PageResponse(IPage<T> page) {
@@ -52,8 +49,7 @@ public class PageResponse<T> extends DataResponse<List<T>> {
     }
 
     public static <T, R> PageResponse<R> of(IPage<T> page, Function<T, R> converter) {
-        val data = page.getRecords().stream().map(converter).collect(Collectors.toList());
-        return new PageResponse<>(data, page.getCurrent(), page.getSize(), page.getTotal());
+        return of(page.convert(converter));
     }
 
     private PageResponse(List<T> data, long pageNum, long pageSize, long total) {

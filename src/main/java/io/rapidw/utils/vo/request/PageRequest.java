@@ -16,17 +16,18 @@
 package io.rapidw.utils.vo.request;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 /**
  * @param <T> 对MPJ：返回值的类型，对MP：entity的类型
  */
-@ApiModel
+@Schema()
+@Data
 public class PageRequest<T> {
-    @ApiModelProperty("页码")
+    @Schema(description = "页码")
     private long pageNum = 1;
-    @ApiModelProperty("每页数量")
+    @Schema(description = "每页数量")
     private long pageSize = 10;
 
     public Page<T> toPage() {
@@ -44,4 +45,5 @@ public class PageRequest<T> {
             return pageNum;
         }
     }
+
 }

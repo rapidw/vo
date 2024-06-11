@@ -16,16 +16,15 @@
 package io.rapidw.utils.vo.response;
 
 import io.rapidw.utils.vo.exception.CommonAppStatus;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@ApiModel
+@Schema
 public class DataResponse<T> extends BaseResponse {
-    @ApiModelProperty("数据")
+    @Schema(description = "数据")
     private T data;
 
     public DataResponse() {
