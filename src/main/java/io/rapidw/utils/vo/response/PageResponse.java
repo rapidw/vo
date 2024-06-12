@@ -1,5 +1,5 @@
 /**
- * Copyright 2023 Rapidw
+ * Copyright 2024 Rapidw
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,19 @@ import java.util.function.Function;
 @Schema
 public class PageResponse<T> extends DataResponse<List<T>> {
 
+    /**
+     * current page number
+     */
     @Schema(description = "当前页码")
     private final long pageNum;
+    /**
+     * size of page
+     */
     @Schema(description = "每页大小")
     private final long pageSize;
+    /**
+     * total count of data
+     */
     @Schema(description = "总数")
     private final long total;
 

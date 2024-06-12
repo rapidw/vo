@@ -1,5 +1,5 @@
 /**
- * Copyright 2023 Rapidw
+ * Copyright 2024 Rapidw
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,10 +21,15 @@ import java.util.function.Supplier;
 
 public class AppException extends RuntimeException {
 
+    /**
+     * status code
+     */
     @Getter
     private final AppStatus status;
+    /**
+     * extra message
+     */
     private String extraMessage;
-    private Exception cause;
 
     public AppException(Exception e, AppStatus status) {
         super(e);
