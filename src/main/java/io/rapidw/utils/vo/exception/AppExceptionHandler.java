@@ -1,5 +1,5 @@
 /**
- * Copyright 2024 Rapidw
+ * Copyright 2025 Rapidw
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,15 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.rapidw.utils.vo.starter;
+package io.rapidw.utils.vo.exception;
 
-import io.rapidw.utils.vo.exception.AppException;
-import io.rapidw.utils.vo.exception.CommonAppStatus;
 import io.rapidw.utils.vo.response.BaseResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 @RestControllerAdvice
 @Slf4j
@@ -34,6 +37,22 @@ public class AppExceptionHandler {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public BaseResponse handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
+        return new BaseResponse(CommonAppStatus.INVALID_REQUEST, e.getMessage());
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public BaseResponse handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+        ObjectError error = e.getBindingResult().getAllErrors().get(0);
+        return new BaseResponse(CommonAppStatus.INVALID_REQUEST, ((FieldError) error).getField() + error.getDefaultMessage());
+    }
+
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public BaseResponse handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
+        return new BaseResponse(CommonAppStatus.INVALID_REQUEST, e.getMessage());
+    }
+
+    @ExceptionHandler(NoResourceFoundException.class)
+    public BaseResponse handleNoResourceException(NoResourceFoundException e) {
         return new BaseResponse(CommonAppStatus.INVALID_REQUEST, e.getMessage());
     }
 
