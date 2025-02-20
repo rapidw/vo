@@ -120,8 +120,13 @@ signing {
     sign publishing.publications.mavenJava
 }
 
-nexusPublishing.repositories {
-    sonatype()
+nexusPublishing {
+    repositories {
+        sonatype {
+            username = findProperty("sonatypeUsername") as String
+            password = findProperty("sonatypePassword") as String
+        }
+    }
 }
 
 tasks.named("closeAndReleaseSonatypeStagingRepository") {
